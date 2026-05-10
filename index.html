@@ -8,55 +8,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --navy: #0a0f1e;
-    --navy2: #111827;
-    --card: #141c2e;
-    --card2: #1a2438;
-    --accent: #4fffb0;
-    --accent2: #00d4ff;
-    --accent3: #ff6b6b;
-    --accent4: #a78bfa;
-    --text: #e8eaf0;
-    --muted: #7a8499;
-    --border: rgba(255,255,255,0.07);
-    --font-display: 'Syne', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
+    --navy: #0a0f1e; --navy2: #111827; --card: #141c2e; --card2: #1a2438;
+    --accent: #4fffb0; --accent2: #00d4ff; --accent3: #ff6b6b; --accent4: #a78bfa;
+    --text: #e8eaf0; --muted: #7a8499; --border: rgba(255,255,255,0.07);
+    --font-display: 'Syne', sans-serif; --font-body: 'DM Sans', sans-serif;
   }
-
   html { scroll-behavior: smooth; }
-  body {
-    background: var(--navy);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 15px;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
+  body { background: var(--navy); color: var(--text); font-family: var(--font-body); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
 
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 1rem 3rem;
-    background: rgba(10,15,30,0.88);
-    backdrop-filter: blur(14px);
+    background: rgba(10,15,30,0.88); backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
   }
   .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; color: var(--accent); letter-spacing: -0.02em; }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
   .nav-links a:hover { color: var(--accent); }
+  .nav-resume {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(79,255,176,0.1); border: 1px solid rgba(79,255,176,0.25);
+    color: var(--accent); padding: 6px 16px; border-radius: 6px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .nav-resume:hover { background: rgba(79,255,176,0.18); }
 
   section { padding: 6rem 0; }
   .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
   /* HERO */
-  #hero {
-    min-height: 100vh; display: flex; align-items: center;
-    position: relative; overflow: hidden; padding-top: 5rem;
-  }
+  #hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 5rem; }
   .hero-bg {
     position: absolute; inset: 0; z-index: 0;
     background:
@@ -66,8 +52,7 @@
   }
   .grid-lines {
     position: absolute; inset: 0; z-index: 0;
-    background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
     background-size: 60px 60px;
   }
   .hero-content { position: relative; z-index: 1; }
@@ -78,15 +63,9 @@
     font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
     color: var(--accent); margin-bottom: 1.5rem;
   }
-  .hero-tag::before {
-    content: ''; width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); animation: pulse 2s infinite;
-  }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-  .hero-name {
-    font-family: var(--font-display); font-size: clamp(2.8rem, 7vw, 5.2rem);
-    font-weight: 800; line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 1rem;
-  }
+  .hero-name { font-family: var(--font-display); font-size: clamp(2.8rem, 7vw, 5.2rem); font-weight: 800; line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 1rem; }
   .hero-name .line2 { -webkit-text-fill-color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.28); }
   .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 580px; margin-bottom: 2.5rem; line-height: 1.85; }
   .hero-sub strong { color: var(--text); font-weight: 500; }
@@ -94,9 +73,8 @@
   .btn-primary {
     display: inline-flex; align-items: center; gap: 8px;
     background: var(--accent); color: var(--navy);
-    padding: 12px 28px; border-radius: 8px;
-    font-weight: 700; font-size: 14px; text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s; font-family: var(--font-body);
+    padding: 12px 28px; border-radius: 8px; font-weight: 700; font-size: 14px;
+    text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; font-family: var(--font-body);
   }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(79,255,176,0.25); }
   .btn-ghost {
@@ -106,11 +84,17 @@
     transition: border-color 0.2s, background 0.2s;
   }
   .btn-ghost:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.04); }
+  .btn-resume {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid rgba(79,255,176,0.3); color: var(--accent);
+    padding: 12px 28px; border-radius: 8px; font-size: 14px; text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-resume:hover { background: rgba(79,255,176,0.08); border-color: rgba(79,255,176,0.5); }
   .hero-stats { display: flex; gap: 3rem; border-top: 1px solid var(--border); padding-top: 2rem; flex-wrap: wrap; }
   .stat-num { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--accent); }
   .stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
-  /* SECTION HEADERS */
   .section-eyebrow { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
   .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; }
   .section-sub { color: var(--muted); max-width: 520px; margin-bottom: 3rem; }
@@ -120,20 +104,10 @@
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
   .about-text p { color: var(--muted); margin-bottom: 1rem; }
   .about-text p strong { color: var(--text); font-weight: 500; }
-  .about-highlight {
-    background: var(--card); border: 1px solid var(--border);
-    border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0;
-    padding: 1.25rem 1.5rem; margin-top: 2rem;
-    font-size: 14px; color: var(--muted); line-height: 1.8;
-  }
+  .about-highlight { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; padding: 1.25rem 1.5rem; margin-top: 2rem; font-size: 14px; color: var(--muted); line-height: 1.8; }
   .about-highlight strong { color: var(--accent); }
-
-  /* SKILLS GRID */
   .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
-  .skill-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 12px; padding: 1.1rem 1.25rem; transition: border-color 0.2s;
-  }
+  .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.25rem; transition: border-color 0.2s; }
   .skill-card:hover { border-color: rgba(79,255,176,0.2); }
   .skill-card-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.4rem; }
   .skill-card-items { font-size: 12.5px; color: var(--muted); line-height: 1.75; }
@@ -142,38 +116,37 @@
   .skill-mlops { background: rgba(167,139,250,0.04); border-color: rgba(167,139,250,0.15); }
   .skill-mlops .skill-card-label { color: var(--accent4); }
 
-  /* PROJECTS TABS */
+  /* PROJECT TABS */
   .project-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
-  .tab-btn {
-    padding: 8px 20px; border-radius: 8px; border: 1px solid var(--border);
-    background: transparent; color: var(--muted); font-size: 13px;
-    cursor: pointer; font-family: var(--font-body);
-    transition: all 0.2s;
-  }
+  .tab-btn { padding: 8px 20px; border-radius: 8px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 13px; cursor: pointer; font-family: var(--font-body); transition: all 0.2s; }
   .tab-btn:hover { border-color: rgba(79,255,176,0.25); color: var(--text); }
   .tab-btn.active { background: rgba(79,255,176,0.1); border-color: rgba(79,255,176,0.35); color: var(--accent); }
   .projects-section { display: none; }
   .projects-section.active { display: block; }
 
-  /* GENAI PROJECT CARDS */
+  /* PROJECT LINKS */
+  .project-links { display: flex; gap: 0.6rem; margin-top: 1.25rem; flex-wrap: wrap; }
+  .proj-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12px; padding: 5px 12px; border-radius: 6px;
+    text-decoration: none; font-weight: 500; transition: all 0.2s;
+    border: 1px solid var(--border);
+  }
+  .proj-link-demo { background: rgba(79,255,176,0.08); color: var(--accent); border-color: rgba(79,255,176,0.25); }
+  .proj-link-demo:hover { background: rgba(79,255,176,0.16); border-color: rgba(79,255,176,0.45); }
+  .proj-link-github { background: rgba(255,255,255,0.04); color: var(--muted); }
+  .proj-link-github:hover { background: rgba(255,255,255,0.08); color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+  /* GENAI CARDS */
   .genai-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
   .genai-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 16px; padding: 2rem;
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem;
     display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem;
-    position: relative; overflow: hidden;
-    transition: transform 0.3s, border-color 0.3s;
+    position: relative; overflow: hidden; transition: transform 0.3s, border-color 0.3s;
   }
   .genai-card:hover { transform: translateY(-3px); border-color: rgba(79,255,176,0.2); }
-  .genai-card-glow {
-    position: absolute; top: -60px; right: -60px;
-    width: 250px; height: 250px; border-radius: 50%;
-    opacity: 0.05; pointer-events: none;
-  }
-  .project-tag {
-    display: inline-block; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
-    padding: 4px 10px; border-radius: 4px; margin-bottom: 1rem;
-  }
+  .genai-card-glow { position: absolute; top: -60px; right: -60px; width: 250px; height: 250px; border-radius: 50%; opacity: 0.05; pointer-events: none; }
+  .project-tag { display: inline-block; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; margin-bottom: 1rem; }
   .tag-rag { background: rgba(79,255,176,0.1); color: var(--accent); }
   .tag-agent { background: rgba(0,212,255,0.1); color: var(--accent2); }
   .tag-finetune { background: rgba(167,139,250,0.12); color: var(--accent4); }
@@ -182,31 +155,18 @@
   .project-title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; letter-spacing: -0.01em; }
   .project-desc { font-size: 13.5px; color: var(--muted); line-height: 1.8; margin-bottom: 1.25rem; }
   .project-stack { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 1.25rem; }
-  .stack-pill {
-    font-size: 11px; padding: 3px 9px;
-    background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-    border-radius: 4px; color: var(--muted);
-  }
+  .stack-pill { font-size: 11px; padding: 3px 9px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 4px; color: var(--muted); }
   .project-metric { display: flex; gap: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
   .metric-val { font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: var(--accent); }
   .metric-lab { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
   .project-highlights { list-style: none; }
-  .project-highlights li {
-    font-size: 13px; color: var(--muted);
-    padding: 7px 0; border-bottom: 1px solid var(--border);
-    display: flex; align-items: flex-start; gap: 8px; line-height: 1.65;
-  }
+  .project-highlights li { font-size: 13px; color: var(--muted); padding: 7px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 8px; line-height: 1.65; }
   .project-highlights li:last-child { border-bottom: none; }
   .project-highlights li::before { content: '→'; color: var(--accent); font-size: 12px; flex-shrink: 0; margin-top: 2px; }
 
-  /* ML PROJECTS GRID (2-col) */
+  /* ML GRID */
   .ml-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .ml-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 16px; padding: 1.75rem;
-    position: relative; overflow: hidden;
-    transition: transform 0.3s, border-color 0.3s;
-  }
+  .ml-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem; position: relative; overflow: hidden; transition: transform 0.3s, border-color 0.3s; }
   .ml-card:hover { transform: translateY(-4px); border-color: rgba(79,255,176,0.2); }
   .ml-card-featured { grid-column: span 2; display: grid; grid-template-columns: 1fr 1.1fr; gap: 2rem; }
 
@@ -215,10 +175,7 @@
   .exp-timeline { position: relative; padding-left: 2rem; }
   .exp-timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: var(--border); }
   .exp-item { position: relative; margin-bottom: 3rem; }
-  .exp-dot {
-    position: absolute; left: -2rem; top: 6px; width: 10px; height: 10px; border-radius: 50%;
-    background: var(--accent); transform: translateX(-4px); box-shadow: 0 0 0 4px rgba(79,255,176,0.12);
-  }
+  .exp-dot { position: absolute; left: -2rem; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); transform: translateX(-4px); box-shadow: 0 0 0 4px rgba(79,255,176,0.12); }
   .exp-dot.muted { background: var(--muted); box-shadow: none; }
   .exp-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem; }
   .exp-role { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; }
@@ -237,17 +194,39 @@
   .edu-year { font-size: 12px; color: var(--muted); }
   .edu-badge { position: absolute; top: 1.25rem; right: 1.25rem; width: 40px; height: 40px; border-radius: 10px; background: rgba(79,255,176,0.08); display: flex; align-items: center; justify-content: center; font-size: 18px; }
 
+  /* RESUME SECTION */
+  #resume-section {
+    background: linear-gradient(135deg, rgba(79,255,176,0.04) 0%, rgba(0,212,255,0.03) 100%);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 4rem 0;
+  }
+  .resume-card {
+    background: var(--card); border: 1px solid rgba(79,255,176,0.15);
+    border-radius: 20px; padding: 2.5rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+  }
+  .resume-left { display: flex; align-items: center; gap: 1.5rem; }
+  .resume-icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: rgba(79,255,176,0.1); border: 1px solid rgba(79,255,176,0.2);
+    display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;
+  }
+  .resume-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .resume-sub { font-size: 13px; color: var(--muted); }
+  .btn-download {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: var(--navy);
+    padding: 14px 32px; border-radius: 10px; font-weight: 700; font-size: 14px;
+    text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+  }
+  .btn-download:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(79,255,176,0.3); }
+
   /* CONTACT */
   #contact { background: linear-gradient(to bottom, var(--navy), #050810); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
   .contact-links { display: flex; flex-direction: column; gap: 1rem; }
-  .contact-link {
-    display: flex; align-items: center; gap: 1rem;
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 12px; padding: 1.25rem 1.5rem;
-    text-decoration: none; color: var(--text);
-    transition: border-color 0.2s, transform 0.2s;
-  }
+  .contact-link { display: flex; align-items: center; gap: 1rem; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; text-decoration: none; color: var(--text); transition: border-color 0.2s, transform 0.2s; }
   .contact-link:hover { border-color: rgba(79,255,176,0.25); transform: translateX(4px); }
   .contact-link-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
   .icon-email { background: rgba(79,255,176,0.1); }
@@ -261,7 +240,6 @@
 
   footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); }
 
-  /* ANIMATIONS */
   .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .fade-in.visible { opacity: 1; transform: none; }
 
@@ -273,6 +251,7 @@
     .skills-grid { grid-template-columns: 1fr; }
     .skill-genai { grid-column: span 1; }
     .hero-stats { gap: 1.5rem; }
+    .resume-card { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
@@ -286,6 +265,7 @@
     <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <a href="Krishna_Kishore_Gedela_Resume_genai.pdf" download class="nav-resume">⬇ Resume</a>
 </nav>
 
 <!-- HERO -->
@@ -294,23 +274,20 @@
   <div class="grid-lines"></div>
   <div class="container hero-content">
     <div class="hero-tag">Open to GenAI · ML · Backend roles · Remote India</div>
-    <h1 class="hero-name">
-      Krishna Kishore<br>
-      <span class="line2">Gedela</span>
-    </h1>
+    <h1 class="hero-name">Krishna Kishore<br><span class="line2">Gedela</span></h1>
     <p class="hero-sub">
       <strong>Generative AI Engineer</strong> with 2+ years of production backend engineering.
-      Designed and deployed <strong>3 end-to-end GenAI systems</strong> — RAG pipelines, multi-agent orchestration, and fine-tuned LLMs with full MLOps observability.
-      MSc Statistics & Applied Mathematics.
+      Designed and deployed <strong>3 end-to-end GenAI systems</strong> — RAG pipelines, multi-agent orchestration, and fine-tuned LLMs with full MLOps observability. MSc Statistics & Applied Mathematics.
     </p>
     <div class="hero-ctas">
       <a href="#projects" class="btn-primary">View Projects ↓</a>
       <a href="#contact" class="btn-ghost">Get in Touch →</a>
+      <a href="Krishna_Kishore_Gedela_Resume_genai.pdf" download class="btn-resume">⬇ Download Resume</a>
     </div>
     <div class="hero-stats">
-      <div><div class="stat-num">3</div><div class="stat-label">GenAI systems deployed</div></div>
+      <div><div class="stat-num">3</div><div class="stat-label">GenAI systems live</div></div>
       <div><div class="stat-num">0.942</div><div class="stat-label">RAGAS faithfulness</div></div>
-      <div><div class="stat-num">67K×</div><div class="stat-label">Query speedup (Redis)</div></div>
+      <div><div class="stat-num">67K×</div><div class="stat-label">Query speedup</div></div>
       <div><div class="stat-num">MSc</div><div class="stat-label">Stats & Maths</div></div>
     </div>
   </div>
@@ -368,17 +345,16 @@
     <div class="section-eyebrow fade-in">Portfolio</div>
     <h2 class="section-title fade-in">What I've built</h2>
     <p class="section-sub fade-in">Production-deployed GenAI systems and classical ML pipelines — all benchmarked and observable.</p>
-
     <div class="project-tabs fade-in">
-      <button class="tab-btn active" onclick="switchTab('genai', this)">⚡ Generative AI</button>
-      <button class="tab-btn" onclick="switchTab('ml', this)">🤖 ML Projects</button>
+      <button class="tab-btn active" onclick="switchTab('genai',this)">⚡ Generative AI</button>
+      <button class="tab-btn" onclick="switchTab('ml',this)">🤖 ML Projects</button>
     </div>
 
-    <!-- GENAI PROJECTS -->
+    <!-- GENAI TAB -->
     <div id="tab-genai" class="projects-section active">
       <div class="genai-grid">
 
-        <!-- Project 1: Legal RAG -->
+        <!-- Legal RAG -->
         <div class="genai-card fade-in">
           <div style="background:rgba(79,255,176,0.5)" class="genai-card-glow"></div>
           <div>
@@ -386,23 +362,23 @@
             <h3 class="project-title">Legal Document Intelligence System</h3>
             <p class="project-desc">End-to-end RAG system for legal Q&A — PDF/TXT ingestion, recursive chunking, FAISS vector retrieval, and conversational memory supporting multi-turn interactions over legal documents.</p>
             <div class="project-stack">
-              <span class="stack-pill">Python</span>
-              <span class="stack-pill">LangChain</span>
-              <span class="stack-pill">GPT-4o-mini</span>
-              <span class="stack-pill">FAISS</span>
-              <span class="stack-pill">FastAPI</span>
-              <span class="stack-pill">Streamlit</span>
-              <span class="stack-pill">RAGAS</span>
+              <span class="stack-pill">Python</span><span class="stack-pill">LangChain</span>
+              <span class="stack-pill">GPT-4o-mini</span><span class="stack-pill">FAISS</span>
+              <span class="stack-pill">FastAPI</span><span class="stack-pill">Streamlit</span><span class="stack-pill">RAGAS</span>
             </div>
             <div class="project-metric">
               <div><div class="metric-val">0.942</div><div class="metric-lab">Faithfulness</div></div>
               <div><div class="metric-val">1.000</div><div class="metric-lab">Context Recall</div></div>
               <div><div class="metric-val">Live</div><div class="metric-lab">Deployed</div></div>
             </div>
+            <div class="project-links">
+              <a href="https://legal-rag-kk.streamlit.app/" target="_blank" class="proj-link proj-link-demo">▶ Live Demo</a>
+              <a href="https://github.com/krishna218" target="_blank" class="proj-link proj-link-github">⌥ GitHub</a>
+            </div>
           </div>
           <div>
             <ul class="project-highlights">
-              <li>PDF/TXT ingestion pipeline with recursive chunking strategy for legal document structure</li>
+              <li>PDF/TXT ingestion with recursive chunking strategy for legal document structure</li>
               <li>FAISS vector retrieval with conversational memory — supports multi-turn legal Q&A</li>
               <li>0.942 faithfulness & 1.000 context recall on RAGAS — top-tier legal domain benchmarks</li>
               <li>FastAPI backend with Pydantic validation + auto-generated Swagger docs</li>
@@ -411,59 +387,59 @@
           </div>
         </div>
 
-        <!-- Project 2: ExamAI Multi-Agent -->
+        <!-- ExamAI -->
         <div class="genai-card fade-in">
           <div style="background:rgba(0,212,255,0.5)" class="genai-card-glow"></div>
           <div>
             <span class="project-tag tag-agent">Multi-Agent · LangGraph</span>
             <h3 class="project-title">ExamAI — Multi-Agent Research System</h3>
-            <p class="project-desc">3-agent LangGraph pipeline for JEE & UPSC exam research — search agent, RAG agent, and verification agent with self-correction loop. Full MLOps: Docker Compose, GitHub Actions CI, Railway CD.</p>
+            <p class="project-desc">3-agent LangGraph pipeline for JEE & UPSC exam research — search, RAG, and verification agents with self-correction loop. Full MLOps: Docker Compose, GitHub Actions CI, Railway CD.</p>
             <div class="project-stack">
-              <span class="stack-pill">Python 3.12</span>
-              <span class="stack-pill">LangGraph</span>
-              <span class="stack-pill">FastAPI</span>
-              <span class="stack-pill">ChromaDB</span>
-              <span class="stack-pill">Redis</span>
-              <span class="stack-pill">Docker</span>
-              <span class="stack-pill">GitHub Actions</span>
+              <span class="stack-pill">Python 3.12</span><span class="stack-pill">LangGraph</span>
+              <span class="stack-pill">FastAPI</span><span class="stack-pill">ChromaDB</span>
+              <span class="stack-pill">Redis</span><span class="stack-pill">Docker</span><span class="stack-pill">GitHub Actions</span>
             </div>
             <div class="project-metric">
               <div><div class="metric-val">60%</div><div class="metric-lab">Latency cut</div></div>
               <div><div class="metric-val">67K×</div><div class="metric-lab">Cache speedup</div></div>
-              <div><div class="metric-val">Live</div><div class="metric-lab">CI/CD deployed</div></div>
+              <div><div class="metric-val">Live</div><div class="metric-lab">CI/CD</div></div>
+            </div>
+            <div class="project-links">
+              <a href="https://krishna218-examai-agent.hf.space/ui" target="_blank" class="proj-link proj-link-demo">▶ Live Demo</a>
+              <a href="https://github.com/krishna218" target="_blank" class="proj-link proj-link-github">⌥ GitHub</a>
             </div>
           </div>
           <div>
             <ul class="project-highlights">
               <li>3-agent pipeline: search → RAG → verification with self-correction when confidence &lt; 0.5</li>
               <li>asyncio.gather() parallelism cut latency from 25s → 10s (60% faster)</li>
-              <li>67,000× repeated-query speedup (25s → 0.17ms) via Redis with MD5-hashed keys and TTL expiry</li>
+              <li>67,000× repeated-query speedup (25s → 0.17ms) via Redis with MD5-hashed keys and TTL</li>
               <li>Graceful in-memory fallback when Redis is unavailable</li>
-              <li>GitHub Actions CI (ruff lint + pytest) + Railway CD — every git push auto-tests and deploys</li>
+              <li>GitHub Actions CI (ruff lint + pytest) + Railway CD — every git push auto-deploys</li>
             </ul>
           </div>
         </div>
 
-        <!-- Project 3: Fine-tuning -->
+        <!-- LegalMind Fine-tuning -->
         <div class="genai-card fade-in">
           <div style="background:rgba(167,139,250,0.5)" class="genai-card-glow"></div>
           <div>
             <span class="project-tag tag-finetune">Fine-tuning · MLOps</span>
             <h3 class="project-title">LegalMind AI Chatbot — Fine-tuning & MLOps</h3>
-            <p class="project-desc">Fine-tuned GPT-4o-mini on legal domain data with full MLOps: MLflow experiment tracking, LangSmith tracing on every inference call, Docker Compose deployment with streaming responses.</p>
+            <p class="project-desc">Fine-tuned GPT-4o-mini on legal domain data with full MLOps: MLflow experiment tracking, LangSmith tracing on every inference, Docker Compose deployment with streaming responses.</p>
             <div class="project-stack">
-              <span class="stack-pill">OpenAI Fine-tuning</span>
-              <span class="stack-pill">MLflow</span>
-              <span class="stack-pill">LangSmith</span>
-              <span class="stack-pill">FastAPI</span>
-              <span class="stack-pill">Docker</span>
-              <span class="stack-pill">Streamlit</span>
-              <span class="stack-pill">Render</span>
+              <span class="stack-pill">OpenAI Fine-tuning</span><span class="stack-pill">MLflow</span>
+              <span class="stack-pill">LangSmith</span><span class="stack-pill">FastAPI</span>
+              <span class="stack-pill">Docker</span><span class="stack-pill">Streamlit</span><span class="stack-pill">Render</span>
             </div>
             <div class="project-metric">
               <div><div class="metric-val">85%</div><div class="metric-lab">Loss reduction</div></div>
-              <div><div class="metric-val">$0.38</div><div class="metric-lab">Total train cost</div></div>
-              <div><div class="metric-val">Live</div><div class="metric-lab">API deployed</div></div>
+              <div><div class="metric-val">$0.38</div><div class="metric-lab">Train cost</div></div>
+              <div><div class="metric-val">Live</div><div class="metric-lab">API</div></div>
+            </div>
+            <div class="project-links">
+              <a href="https://legal-chatbot-ui.onrender.com/" target="_blank" class="proj-link proj-link-demo">▶ Live Demo</a>
+              <a href="https://github.com/krishna218" target="_blank" class="proj-link proj-link-github">⌥ GitHub</a>
             </div>
           </div>
           <div>
@@ -480,24 +456,18 @@
       </div>
     </div>
 
-    <!-- ML PROJECTS -->
+    <!-- ML TAB -->
     <div id="tab-ml" class="projects-section">
       <div class="ml-grid">
-
-        <!-- Featured: Patient Readmission -->
         <div class="ml-card ml-card-featured fade-in">
           <div>
-            <span class="project-tag tag-cv" style="background:rgba(0,212,255,0.1);color:var(--accent2)">Healthcare ML</span>
+            <span class="project-tag" style="background:rgba(0,212,255,0.1);color:var(--accent2)">Healthcare ML</span>
             <h3 class="project-title">Patient Readmission Risk Predictor</h3>
-            <p class="project-desc">End-to-end ML pipeline predicting 30-day hospital readmission risk for diabetic patients. 101,766 real patient records from 130 US hospitals. Deliberate ethical choice to exclude race as a predictor variable.</p>
+            <p class="project-desc">End-to-end ML pipeline predicting 30-day hospital readmission risk for diabetic patients. 101,766 real patient records. Ethical choice to exclude race as a predictor variable.</p>
             <div class="project-stack">
-              <span class="stack-pill">Python</span>
-              <span class="stack-pill">XGBoost</span>
-              <span class="stack-pill">FastAPI</span>
-              <span class="stack-pill">Docker</span>
-              <span class="stack-pill">Streamlit</span>
-              <span class="stack-pill">Hugging Face Spaces</span>
-              <span class="stack-pill">SMOTE</span>
+              <span class="stack-pill">Python</span><span class="stack-pill">XGBoost</span>
+              <span class="stack-pill">FastAPI</span><span class="stack-pill">Docker</span>
+              <span class="stack-pill">Streamlit</span><span class="stack-pill">Hugging Face</span><span class="stack-pill">SMOTE</span>
             </div>
             <div class="project-metric">
               <div><div class="metric-val">0.685</div><div class="metric-lab">AUC-ROC</div></div>
@@ -513,43 +483,49 @@
             <li>AUC-ROC consistent with published academic benchmarks</li>
           </ul>
         </div>
-
-        <!-- Face Mask -->
         <div class="ml-card fade-in">
           <span class="project-tag tag-cv">Computer Vision</span>
           <h3 class="project-title">Face Mask Detection — Real-Time CV</h3>
           <p class="project-desc">Real-time CV system using Transfer Learning on MobileNetV2. Live webcam inference via OpenCV for edge deployment.</p>
           <div class="project-stack">
-            <span class="stack-pill">PyTorch</span>
-            <span class="stack-pill">MobileNetV2</span>
-            <span class="stack-pill">Transfer Learning</span>
-            <span class="stack-pill">OpenCV</span>
+            <span class="stack-pill">PyTorch</span><span class="stack-pill">MobileNetV2</span>
+            <span class="stack-pill">Transfer Learning</span><span class="stack-pill">OpenCV</span>
           </div>
           <div class="project-metric">
             <div><div class="metric-val">99.19%</div><div class="metric-lab">Accuracy</div></div>
             <div><div class="metric-val">11.8K</div><div class="metric-lab">Images</div></div>
           </div>
         </div>
-
-        <!-- Car Dekho -->
         <div class="ml-card fade-in">
           <span class="project-tag tag-ml">Regression · Ensemble</span>
           <h3 class="project-title">Car Dekho — Used Car Price Prediction</h3>
           <p class="project-desc">End-to-end ML pipeline for used car pricing using ensemble methods on 10,000+ vehicle records.</p>
           <div class="project-stack">
-            <span class="stack-pill">Scikit-learn</span>
-            <span class="stack-pill">Random Forest</span>
-            <span class="stack-pill">Gradient Boosting</span>
-            <span class="stack-pill">FastAPI</span>
-            <span class="stack-pill">Streamlit</span>
+            <span class="stack-pill">Scikit-learn</span><span class="stack-pill">Random Forest</span>
+            <span class="stack-pill">Gradient Boosting</span><span class="stack-pill">FastAPI</span><span class="stack-pill">Streamlit</span>
           </div>
           <div class="project-metric">
             <div><div class="metric-val">92%</div><div class="metric-lab">Accuracy</div></div>
             <div><div class="metric-val">10K+</div><div class="metric-lab">Records</div></div>
           </div>
         </div>
-
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME DOWNLOAD SECTION -->
+<section id="resume-section">
+  <div class="container">
+    <div class="resume-card fade-in">
+      <div class="resume-left">
+        <div class="resume-icon">📄</div>
+        <div>
+          <div class="resume-title">Krishna Kishore Gedela — Resume</div>
+          <div class="resume-sub">Generative AI Engineer · ML Engineer · Backend Engineer &nbsp;·&nbsp; Updated May 2026</div>
+        </div>
+      </div>
+      <a href="Krishna_Kishore_Gedela_Resume_genai.pdf" download class="btn-download">⬇ Download Resume</a>
     </div>
   </div>
 </section>
@@ -573,7 +549,7 @@
         <ul class="exp-bullets">
           <li>Built RESTful APIs with Java/Spring Boot for a Hospital Management System</li>
           <li>Optimised complex SQL queries and stored procedures on production PostgreSQL databases</li>
-          <li>Automated DB backups and server health monitoring via Shell scripts on AWS EC2 — reduced manual overhead by ~30%</li>
+          <li>Automated DB backups and server health monitoring via Shell scripts — reduced manual overhead by ~30%</li>
         </ul>
       </div>
       <div class="exp-item">
@@ -593,7 +569,6 @@
         </ul>
       </div>
     </div>
-
     <div style="margin-top:4rem">
       <div class="section-eyebrow fade-in">Education</div>
       <h2 class="section-title fade-in">Academic foundation</h2>
@@ -628,13 +603,13 @@
             <div class="contact-link-icon icon-email">✉️</div>
             <div><div class="contact-link-val">krishnakishoregedela@gmail.com</div><div class="contact-link-text">Email me directly</div></div>
           </a>
-          <a href="https://github.com/krishnakishoregedela" target="_blank" class="contact-link">
+          <a href="https://github.com/krishna218" target="_blank" class="contact-link">
             <div class="contact-link-icon icon-github">⌥</div>
-            <div><div class="contact-link-val">github.com/krishnakishoregedela</div><div class="contact-link-text">See my code</div></div>
+            <div><div class="contact-link-val">github.com/krishna218</div><div class="contact-link-text">See my code</div></div>
           </a>
-          <a href="https://linkedin.com/in/krishnakishoregedela" target="_blank" class="contact-link">
+          <a href="https://www.linkedin.com/in/krishna218/" target="_blank" class="contact-link">
             <div class="contact-link-icon icon-linkedin">in</div>
-            <div><div class="contact-link-val">linkedin.com/in/krishnakishoregedela</div><div class="contact-link-text">Connect on LinkedIn</div></div>
+            <div><div class="contact-link-val">linkedin.com/in/krishna218</div><div class="contact-link-text">Connect on LinkedIn</div></div>
           </a>
         </div>
       </div>
@@ -667,7 +642,6 @@
     document.getElementById('tab-' + tab).classList.add('active');
     btn.classList.add('active');
   }
-
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
